@@ -1,0 +1,13 @@
+import PyPDF2     # First Import PyPDF2 Library
+import pyttsx3    # Import pyttsx3 Library 
+
+book = open('Enter your book name with extention', 'rb')
+bookReader = PyPDF2.PdfFileReader(book)
+pages = bookReader.numPages
+print(pages)
+
+speak = pyttsx3.init()
+page = bookReader.getPage(20)   # Instead of 20, You have to write page number you want 
+text = page.extractText()
+speak.say(text)
+speak.runAndWait()
